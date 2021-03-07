@@ -59,7 +59,7 @@ function Search({coinData, fetchCoins}) {
             <div id='search' className='row'>
                 <form id='form' className='form-inline'>
                     <input  className='form-control' onClick={() => setSearchvalue(true)} value={query} placeholder="Search for..." onChange={(e)=>handleChange(e)}/>
-                    <button>Search</button>
+                    <button className='btn btn-info'>Search</button>
                 </form>
                 {
                     searchvalue && query.length != 0 ?<div id="results" >

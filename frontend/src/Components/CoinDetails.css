@@ -1,10 +1,15 @@
+body, html {
+    background-color: rgb(39, 65, 71); 
+
+}
+
 #alignment {
     margin-top: 50px;
-    background-color: rgb(177, 225, 236);
+    background-color: rgb(253, 253, 253);
 }
 
 .cart-box-element {
-    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    box-shadow: hsl(0, 6%, 10%) 0 0 16px;
     background-color: #fff;
     border-radius: 4px;
     padding: 10px;
@@ -16,7 +21,7 @@
     align-items: flex-stretch;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 2px solid #f52929;
     margin-top: 30px;
     background-color: rgb(235, 235, 143);
   }
@@ -56,4 +61,14 @@
 #button {
   float: right;
   background-color: rgb(181, 196, 146);
+}
+
+#box {
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+#news-box {
+  margin-bottom: 20px;
 }

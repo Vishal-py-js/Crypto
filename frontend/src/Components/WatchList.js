@@ -44,8 +44,8 @@ function WatchList() {
     return (
         <div className='container'>
             <div className='row'>
-            <a href='/'><button id='button' type="button">HomePage</button></a>
-            <div className='cart-box-element'>
+            <a href='/'><button id='button' className='btn' type="button">HomePage</button></a>
+            <div id='box' className='cart-box-element'>
                     <div className='cart-row'>
                     <div style={{flex: 2}}></div>
                         <div style={{flex: 2}}></div>
@@ -68,8 +68,8 @@ function WatchList() {
                         
                 </div>
                 
-                <div className='col-lg-12'>
-                    <h2>News</h2>
+                <div id='news-box' className='col-lg-12'>
+                    <h2 style={{'color':'white'}}>News</h2>
                     <div className='cart-box-element'>
                     {
                         articles.map(article => (

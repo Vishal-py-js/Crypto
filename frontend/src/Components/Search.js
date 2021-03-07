@@ -48,8 +48,7 @@ function Search({coinData, fetchCoins}) {
             localStorage.setItem('WatchList', JSON.stringify(item))
         } else {
             return
-            // let existing = JSON.parse(localStorage.getItem('WatchList'))
-            // existing.push(JSON.stringify(item))
+            
         }
         console.log(item)
     }

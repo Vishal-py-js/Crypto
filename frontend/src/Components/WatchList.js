@@ -42,7 +42,7 @@ function WatchList() {
             <div className='cart-box-element'>
                     <div className='cart-row'>
                     <div style={{flex: 2}}></div>
-                        <div style={{flex: 2}}><strong></strong></div>
+                        <div style={{flex: 2}}></div>
                         <div style={{flex: 1}}><strong>%day Change</strong></div>
                         <div style={{flex: 1}}><strong>Day change</strong></div>
                         <div style={{flex: 1}}><strong>Price</strong></div>
@@ -50,7 +50,7 @@ function WatchList() {
                     
                     <div className='cart-row' >
                         <div style={{flex: "2"}}>{name.name}</div>
-                        <div style={{flex: "2"}}></div>
+                        <div style={{flex: "2"}}><SparkLine graphData={graphData} /></div>
                         <div style={{flex: "1"}}>{marketdata.price_change_percentage_24h}</div>
                         <div style={{flex: "1"}}>
                             <p className='quantity'>{marketdata.price_change_24h}</p>
@@ -74,7 +74,6 @@ function WatchList() {
                     }
                 </div>
             </div>
-            <SparkLine graphData={graphData} />
         </div>
     )
 }

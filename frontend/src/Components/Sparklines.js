@@ -11,48 +11,60 @@ const SparkLine = ({graphData}) => {
         updatedGraphData.push(newdata)
     })
     
+    
+    const dateArray = []
+    let datenow = new Date()
+    let i = 0
+    while(i < 168) {
+        const date_in_unix = datenow.setHours(datenow.getHours() - 1 )
+        const date_in_human = new Date(date_in_unix)
+        dateArray.push(date_in_human)
+        i += 1
+    }
+    console.log(dateArray)
 
-      const state = {
-      
-        series: [{
-            name: "Price",
-            data: updatedGraphData
-        }],
-        options: {
-          chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-              enabled: false
-            }
-          },
-          dataLabels: {
+    const state = {
+    series: [{
+        name: "Price",
+        data: updatedGraphData
+    }],
+    options: {
+        chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
             enabled: false
-          },
-          stroke: {
-            curve: 'straight'
-          },
-          title: {
-            text: 'Product Trends by Month',
-            align: 'left'
-          },
-          grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5
-            },
-          },
-          xaxis: {
-            categories: ['1d ago', '2d ago', '3d ago', '4d ago', '5d ago', '6d ago', '7d ago'],
-          }
+        }
         },
-      };
+        dataLabels: {
+        enabled: false
+        },
+        stroke: {
+        curve: 'straight'
+        },
+        title: {
+        text: 'Last seven days prices',
+        align: 'left'
+        },
+        grid: {
+        row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+        },
+        },
+        xaxis: {
+        categories: dateArray.reverse(),
+        }
+      },
+    };
 
-      return (
-        <div id="chart">
-            <ReactApexChart options={state.options} series={state.series} type="line" height={300} width={300}/>
-        </div>
-      )
+    
+
+    return (
+    <div id="chart">
+        <ReactApexChart options={state.options} series={state.series} type="line" height={250} width={250}/>
+    </div>
+    )
 }
 
 export default SparkLine

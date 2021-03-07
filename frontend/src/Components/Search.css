@@ -1,0 +1,17 @@
+#results {
+    background-color: rgb(241, 223, 200);
+    margin-top: 40px;
+    height: fit-content;
+}
+
+#list{
+    list-style-type: none;
+}
+
+#form {
+    position: fixed;
+}
+
+#search {
+    text-align: center;
+}

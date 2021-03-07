@@ -13,8 +13,7 @@ function App() {
     <Provider store={store}>
         <Router>
           <Switch>
-            <Route path="/" exact component={Search} />
-            <Route path="/coin_details" exact component={CoinDetails} />
+            <Route path="/" exact component={CoinDetails} />
             <Route path='/watchlist' exact component={WatchList} />
           </Switch>
         </Router>

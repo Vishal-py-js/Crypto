@@ -4,7 +4,6 @@ import ReactApexChart from 'react-apexcharts'
 
 const SparkLine = ({graphData}) => {
 
-
     const updatedGraphData = []
     graphData.map(data => {
         let newdata = data.toFixed(2)
@@ -22,6 +21,7 @@ const SparkLine = ({graphData}) => {
         i += 1
     }
     console.log(dateArray)
+
 
     const state = {
     series: [{
@@ -43,7 +43,7 @@ const SparkLine = ({graphData}) => {
         curve: 'straight'
         },
         title: {
-        text: 'Last seven days prices',
+        text: 'Last 7 days prices(USD)',
         align: 'left'
         },
         grid: {
@@ -61,9 +61,9 @@ const SparkLine = ({graphData}) => {
     
 
     return (
-    <div id="chart">
-        <ReactApexChart options={state.options} series={state.series} type="line" height={250} width={250}/>
-    </div>
+        <div id="chart">
+            <ReactApexChart options={state.options} series={state.series} type="line" height={250} width={250}/>
+        </div>
     )
 }
 

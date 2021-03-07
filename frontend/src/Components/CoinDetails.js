@@ -62,6 +62,7 @@ function CoinDetails() {
 
     return (
         <div className='container'>
+            <div><a href='watchlist'><button id='button' type="button">WatchList</button></a></div>
             <div className='row'>
                 <div className='col-lg-8'>
                     <div className='cart-row'>

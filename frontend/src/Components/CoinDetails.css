@@ -22,7 +22,7 @@
   }
 
   #price {
-      margin-left: 180px;
+      margin-left: 110px;
   }
 
   #select {
@@ -52,4 +52,8 @@
 
 #ptag {
   margin-left: 30px;
+}
+#button {
+  float: right;
+  background-color: rgb(181, 196, 146);
 }

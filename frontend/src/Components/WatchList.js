@@ -36,9 +36,15 @@ function WatchList() {
         setName(data.data)
     }
 
+    const removeWatchlist = () => {
+        localStorage.removeItem('WatchList')
+        window.location.reload()
+    }
+
     return (
         <div className='container'>
             <div className='row'>
+            <a href='/'><button id='button' type="button">HomePage</button></a>
             <div className='cart-box-element'>
                     <div className='cart-row'>
                     <div style={{flex: 2}}></div>
@@ -49,7 +55,7 @@ function WatchList() {
                     </div>
                     
                     <div className='cart-row' >
-                        <div style={{flex: "2"}}>{name.name}</div>
+                        <div style={{flex: "2"}}><h3>{name.name}</h3></div>
                         <div style={{flex: "2"}}><SparkLine graphData={graphData} /></div>
                         <div style={{flex: "1"}}>{marketdata.price_change_percentage_24h}</div>
                         <div style={{flex: "1"}}>
@@ -58,11 +64,13 @@ function WatchList() {
                         <div style={{flex: "1"}}>{price.usd}</div>
                         <h3></h3>
                     </div>
+                    <button onClick={()=>removeWatchlist()} type="button" class="btn btn-danger">Delete</button>
                         
                 </div>
                 
                 <div className='col-lg-12'>
                     <h2>News</h2>
+                    <div className='cart-box-element'>
                     {
                         articles.map(article => (
                             <div className='news'>
@@ -72,6 +80,7 @@ function WatchList() {
                             </div>
                         ))
                     }
+                    </div>
                 </div>
             </div>
         </div>

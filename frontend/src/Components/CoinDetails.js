@@ -65,8 +65,8 @@ function CoinDetails() {
             <a href='watchlist'><button id='button' className='btn' type="button">WatchList</button></a>
             <div className='row'>
                 <div className='col-lg-8'>
-                    <div className='cart-row'>
-                        <h2>Bitcoin(BTC)</h2>
+                    <div style={{'paddingTop':'15px'}} className='cart-row'>
+                        <h3>Bitcoin(BTC)</h3>
                         <select id='select' value={currency} onClick={()=>getPrice()} onChange={handleChange}>
                             {
                                 currencies.map((option) => (
@@ -74,7 +74,7 @@ function CoinDetails() {
                                 ))
                             }
                         </select>
-                        <h2 id='price' >{`${currency.toUpperCase()} ${price}`}</h2>
+                        <h3 id='price' >{`${currency.toUpperCase()} ${price}`}</h3>
                     </div>
                 </div>
                 <div id='search-bar' className='col-lg-4'>

@@ -18,7 +18,8 @@ function WatchList() {
     const[graphData, setGraphData] = useState([])
 
     const getArticles = async() => {
-        const data = await axios.get(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=af4c42a75216498eba2880e8bc4dc17a`)
+        const list = JSON.parse(localStorage.getItem('WatchList'))
+        const data = await axios.get(`https://newsapi.org/v2/everything?q=${list.name}&apiKey=af4c42a75216498eba2880e8bc4dc17a`)
         const response = data.data.articles.slice(0, 5)
         setArticles(response)
         console.log(response)
@@ -55,7 +56,7 @@ function WatchList() {
                     </div>
                     
                     <div className='cart-row' >
-                        <div style={{flex: "2"}}><h3>{name.name}</h3></div>
+                        <div style={{flex: "2"}}><h4>{name.name}</h4></div>
                         <div style={{flex: "2"}}><SparkLine graphData={graphData} /></div>
                         <div style={{flex: "1"}}>{marketdata.price_change_percentage_24h}</div>
                         <div style={{flex: "1"}}>
@@ -69,14 +70,13 @@ function WatchList() {
                 </div>
                 
                 <div id='news-box' className='col-lg-12'>
-                    <h2 style={{'color':'white'}}>News</h2>
+                    <h2 style={{'color':'white', 'textAlign':'center'}}>News</h2>
                     <div className='cart-box-element'>
                     {
                         articles.map(article => (
                             <div className='news'>
                                 <h3>{article.title}</h3>
-                                <p>{article.description}</p>
-                                
+                                <p>{article.description}</p>   
                             </div>
                         ))
                     }

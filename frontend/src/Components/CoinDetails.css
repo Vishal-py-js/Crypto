@@ -1,44 +1,45 @@
 body, html {
-    background-color: rgb(39, 65, 71); 
-
+  background-color: rgb(39, 65, 71); 
 }
 
 #alignment {
-    margin-top: 50px;
-    background-color: rgb(253, 253, 253);
+  margin-top: 50px;
+  background-color: rgb(253, 253, 253);
+  width: 900px;
+  
 }
 
 .cart-box-element {
-    box-shadow: hsl(0, 6%, 10%) 0 0 16px;
-    background-color: #fff;
-    border-radius: 4px;
-    padding: 10px;
-    width: 900px;
-  }
+  box-shadow: hsl(0, 6%, 10%) 0 0 16px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 900px;
+}
 
-  .cart-row {
-    display: flex;
-    align-items: flex-stretch;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #f52929;
-    margin-top: 30px;
-    background-color: rgb(235, 235, 143);
-  }
+.cart-row {
+  display: flex;
+  align-items: flex-stretch;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #d60909;
+  margin-top: 30px;
+  background-color: rgb(235, 235, 143);
+}
 
-  #price {
-      margin-left: 110px;
-  }
+#price {
+    margin-left: 100px;
+}
 
-  #select {
-      height: 50px;
-      color: rgb(24, 26, 23);
-      font-weight: 600;
-  }
+#select {
+    height: 50px;
+    color: rgb(24, 26, 23);
+    font-weight: 600;
+}
 
 .news {
     /* display: flex; */
-    align-items: flex-stretch;
+    /* text-align: center; */
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid #ececec;
@@ -46,9 +47,9 @@ body, html {
     background-color: rgb(235, 235, 143);
   }
 
-  #search-bar {
-    margin-top: 30px;
-  }
+#search-bar {
+  margin-top: 30px;
+}
 
 #list {
   display: flex;

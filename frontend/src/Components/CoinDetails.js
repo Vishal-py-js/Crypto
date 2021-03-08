@@ -80,8 +80,8 @@ function CoinDetails() {
                 <div id='search-bar' className='col-lg-4'>
                     <Search />
                 </div>
-                <div className='col-lg-8'>
-                    <div className='col-lg-12' id='alignment'>
+                <div className='col-lg-12'>
+                    <div id='alignment'>
                         <ApexChart currency={currency} />
                     </div>
                 </div>

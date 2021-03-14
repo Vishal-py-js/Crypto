@@ -28,13 +28,15 @@ body, html {
 }
 
 #price {
-    margin-left: 100px;
+    margin-left: 150px;
 }
 
 #select {
-    height: 50px;
+    height: 30px;
     color: rgb(24, 26, 23);
     font-weight: 600;
+    width: 90px;
+    margin-left: 10px;
 }
 
 .news {

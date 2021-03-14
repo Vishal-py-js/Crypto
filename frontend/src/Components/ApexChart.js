@@ -2,17 +2,17 @@ import React, {useState, useEffect} from 'react'
 import ReactApexChart from 'react-apexcharts'
 import axios from 'axios'
 
-const ApexChart = ({currency}) => {
+const ApexChart = ({crypto}) => {
 
     const[prices, setPrices] = useState([])
 
     useEffect(() => {
         getPrices()
-    }, [currency])
+    }, [crypto])
 
-    console.log(currency)
+    console.log(crypto)
     const getPrices = async() => {
-        await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?id=bitcoin&vs_currency=${currency}&days=30`)
+        await axios.get(`https://api.coingecko.com/api/v3/coins/${crypto}/ohlc?id=${crypto}&vs_currency=usd&days=30`)
         .then(response => {
             setPrices(response.data)
             console.log(response.data)

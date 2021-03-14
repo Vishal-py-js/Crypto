@@ -10,9 +10,10 @@ const SparkLine = ({graphData}) => {
         updatedGraphData.push(newdata)
     })
     
-    
+    //the below function returns an array containing hourly time from the last 7 days
     const dateArray = []
     let datenow = new Date()
+    
     let i = 0
     while(i < 168) {
         const date_in_unix = datenow.setHours(datenow.getHours() - 1 )

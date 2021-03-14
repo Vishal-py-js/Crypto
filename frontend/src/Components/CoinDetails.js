@@ -1,53 +1,41 @@
 import React, {useState, useEffect} from 'react'
+import {connect} from 'react-redux'
+import {fetchCoins} from '../redux/Action'
 import axios from 'axios'
 import './CoinDetails.css'
-import {currencies} from './Currencies'
+import {cryptoCurrencies} from './Currencies'
 import ApexChart from './ApexChart'
 import Search from './Search'
 
-function CoinDetails() {
+function CoinDetails({coinData, fetchCoins}) {
 
-    const[currency, setCurrency] = useState('usd')
     const[price, setPrice] = useState('')
+    const[crypto, setCrypto] = useState('bitcoin')
 
     useEffect(() => {
+        fetchCoins()
         getPrice()
     }, [])
 
     const getPrice = async() => {
-        const data = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,inr,pkr,eur,aed,aud,cad,jpy,nzd,rub`)
-        
+        const data = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`)
+        console.log(data.data)
         let currencyPrice = ''
-        if(currency === 'usd') {
-            currencyPrice = data.data.bitcoin.usd
+        if(crypto === 'bitcoin') {
+            currencyPrice = await data.data.bitcoin.usd
             setPrice(currencyPrice)
-        } else if(currency === 'inr') {
-            currencyPrice = data.data.bitcoin.inr
+        } else if(crypto === 'ethereum') {
+            currencyPrice = await data.data.ethereum.usd
             setPrice(currencyPrice)
-        } else if(currency === 'pkr') {
-            currencyPrice = data.data.bitcoin.pkr
+        } else if(crypto === 'dogecoin') {
+            currencyPrice = await data.data.dogecoin.usd
             setPrice(currencyPrice)
-        } else if(currency === 'eur') {
-            currencyPrice = data.data.bitcoin.eur
-            setPrice(currencyPrice)
-        } else if(currency === 'aed') {
-            currencyPrice = data.data.bitcoin.aed
-            setPrice(currencyPrice)
-        } else if(currency === 'aud') {
-            currencyPrice = data.data.bitcoin.aud
-            setPrice(currencyPrice)
-        } else if(currency === 'cad') {
-            currencyPrice = data.data.bitcoin.cad
-            setPrice(currencyPrice)
-        } else if(currency === 'jpy') {
-            currencyPrice = data.data.bitcoin.jpy
-            setPrice(currencyPrice)
-        } else if(currency === 'nzd') {
-            currencyPrice = data.data.bitcoin.nzd
-            setPrice(currencyPrice)
-        } else if(currency === 'rub') {
-            currencyPrice = data.data.bitcoin.rub
-            setPrice(currencyPrice)
+        } else if(crypto === 'litecoin') {
+            currencyPrice = await data.data.litecoin.usd
+            setPrice(currencyPrice) 
+        } else if(crypto === 'cardano') {
+            currencyPrice = await data.data.cardano.usd
+            setPrice(currencyPrice) 
         } else {
             return currencyPrice
         }
@@ -55,10 +43,15 @@ function CoinDetails() {
         console.log(data.data.bitcoin)
     }
 
-    const handleChange = (e) => {
-        setCurrency(e.target.value)
+    console.log(coinData)
+
+
+    const handleCryptoChange = (e) => {
+        setCrypto(e.target.value)
         console.log(e.target.value)
     }
+
+    console.log(crypto)
 
     return (
         <div className='container'>
@@ -66,15 +59,15 @@ function CoinDetails() {
             <div className='row'>
                 <div className='col-lg-8'>
                     <div style={{'paddingTop':'15px'}} className='cart-row'>
-                        <h3>Bitcoin(BTC)</h3>
-                        <select id='select' value={currency} onClick={()=>getPrice()} onChange={handleChange}>
+                        <h4>{crypto.charAt(0).toUpperCase()+crypto.slice(1)}</h4>
+                        <select id='select' value={crypto} onClick={()=>getPrice()} onChange={handleCryptoChange} >
                             {
-                                currencies.map((option) => (
-                                    <option key={option.value} value={option.value}>{option.label}</option>
+                                cryptoCurrencies.map((coin) => (
+                                    <option key={coin.label} value={coin.value}>{coin.label}</option>
                                 ))
                             }
                         </select>
-                        <h3 id='price' >{`${currency.toUpperCase()} ${price}`}</h3>
+                        <h4 id='price' >{`USD ${price}`}</h4>
                     </div>
                 </div>
                 <div id='search-bar' className='col-lg-4'>
@@ -82,7 +75,7 @@ function CoinDetails() {
                 </div>
                 <div className='col-lg-12'>
                     <div id='alignment'>
-                        <ApexChart currency={currency} />
+                        <ApexChart crypto={crypto} />
                     </div>
                 </div>
             </div>
@@ -91,4 +84,16 @@ function CoinDetails() {
     )
 }
 
-export default CoinDetails
+const mapStateToProps = state => {
+    return {
+        coinData: state.coins.coins
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchCoins: () => dispatch(fetchCoins())
+    }
+}
+ 
+export default connect(mapStateToProps, mapDispatchToProps)(CoinDetails)

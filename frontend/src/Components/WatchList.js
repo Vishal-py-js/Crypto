@@ -65,7 +65,7 @@ function WatchList() {
                         <div style={{flex: "1"}}>{price.usd}</div>
                         <h3></h3>
                     </div>
-                    <button onClick={()=>removeWatchlist()} type="button" class="btn btn-danger">Delete</button>
+                    <button onClick={()=>removeWatchlist()} type="button" className="btn btn-danger">Delete</button>
                         
                 </div>
                 

@@ -13,14 +13,15 @@ function Search({coinData, fetchCoins}) {
 
     useEffect(() => {
         fetchCoins()
+        
     }, [])
 
     // console.log(coinData.coins)
 
-    const coinNames = []
+    let coinNames = []
     coinData.map(coin => {
         let slicedName = coin.name.toLowerCase()
-        coinNames.push({'id':coin.id, 'name':slicedName})
+        coinNames.push({'id':coin.id, 'name':slicedName, 'value': false})
     })
     console.log(coinNames)
 
@@ -38,17 +39,22 @@ function Search({coinData, fetchCoins}) {
         console.log(coinId)
     }
 
-    const handleClick = (checked) => {
-        setChecked(!checked)
+    const handleClick = (item) => {
+        item.value = !item.value
     }
 
+    // const handleClick = (item) => {
+    //     setChecked(!item.value)
+    // }
+
     
-    const handlechangecheck = (checked, item) => {
-        if(checked == false) {
+    const handlechangecheck = (item) => {
+        if(item.value == true) {
             localStorage.setItem('WatchList', JSON.stringify(item))
+            alert(`${item.name} has been added to your watchlist`)
         } else {
-            return
-            
+            localStorage.removeItem('WatchList')
+            alert(`${item.name} has been removed from your watchlist`)
         }
         console.log(item)
     }
@@ -68,7 +74,8 @@ function Search({coinData, fetchCoins}) {
                                 <ul id='list'>
                                     <a><li onClick={() => handleCoinId(item)} key={item.id}>{item.name}</li></a>
                                     
-                                    <input onClick={()=>handleClick(checked)} onChange={()=>handlechangecheck(checked, item)}  type='checkbox' id='ptag' name='check' checked={checked} />
+                                    <input type='checkbox' id='ptag' name='check' checked={item.value} onClick={()=>handleClick(item)} onChange={()=>handlechangecheck(item)} />
+                                    {/* <ToggleButton value='check' selected={checked} onChange={()=>{setChecked(!checked)}} /> */}
                                 </ul>
                             ))
                         }
